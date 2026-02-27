@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Task Manager</title>
+</head>
+<style>
+    body{
+        background-color: lavenderblush;
+        font-family: 'Times New Roman', Times, serif;
+        font-style: italic;
+    }
+
+    .parent{
+        background-color: plum;
+        color: blue;
+        border:3px solid black;
+        border-radius: 15px;
+        text-align: center;
+        height:500px;
+        overflow-y: auto;
+        width:500px;
+        flex-wrap: wrap;
+        margin:50px auto;
+        box-shadow: 0 0 10px purple;
+        padding:20px;
+    }
+    button{
+        padding:8px;
+        margin-top:10px;
+        cursor: pointer;
+        border: none;
+        border-radius: 10px;
+    }
+    li{
+        margin-top: 10x;
+        list-style: none;
+        background-color: aquamarine;
+        padding: 8px;
+        border: 5px solid darkgreen;
+        border-radius: 15px;
+    }
+</style>
+<body>
+   <div class="parent">
+    <h1>Smart Task Manager</h1>
+    <input type="text" id="Input" placeholder="Enter a Task">
+    <button id="addBtn">Add Task</button>
+    <p id="message"></p>
+    <p>Total Tasks: <span id="count">0</span></p>
+    <ul id="list"></ul>
+</div>
+
+<script>
+let tasks = [];
+
+const input = document.getElementById("Input");
+const msg = document.getElementById("message");
+const addBtn = document.getElementById("addBtn");
+
+// Add task button click
+addBtn.addEventListener("click", addTask);
+
+// Clear error when typing
+input.addEventListener("input", () => {
+    msg.innerText = "";
+});
+
+// Optional: Press Enter to add task
+input.addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+        addTask();
+    }
+});
+
+function addTask() {
+    if (input.value.trim() === "") {
+        msg.innerText = "Please enter a task!";
+        return;
+    }
+
+    msg.innerText = "";
+
+    tasks.push({ text: input.value, done: false });
+    input.value = "";
+    showTasks();
+}
+
+function showTasks() {
+    let list = document.getElementById("list");
+    let count = document.getElementById("count");
+
+    list.innerHTML = "";
+
+    tasks.forEach((task, index) => {
+        let li = document.createElement("li");
+
+        // Checkbox
+        let checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = task.done;
+
+        checkbox.addEventListener("change", () => {
+            tasks[index].done = checkbox.checked;
+            showTasks();
+        });
+
+        li.appendChild(checkbox);
+
+        // Task text
+        let text = document.createElement("span");
+        text.innerText = " " + task.text;
+
+        if (task.done) {
+            text.style.textDecoration = "line-through";
+            text.style.color = "gray";
+        }
+
+        li.appendChild(text);
+
+        // Delete button
+        let deleteBtn = document.createElement("button");
+        deleteBtn.innerText = " Delete";
+        deleteBtn.addEventListener("click", () => {
+            tasks.splice(index, 1);
+            showTasks();
+        });
+
+        li.appendChild(deleteBtn);
+
+        list.appendChild(li);
+    });
+
+    count.innerText = tasks.length;
+
+    // ⭐ NEW FEATURE: Display tasks array in console
+    console.table(tasks);
+}
+</script>
+
+</body>
+</html>
