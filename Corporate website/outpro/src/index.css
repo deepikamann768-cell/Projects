@@ -1,0 +1,309 @@
+/* RESET */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #0b1220, #1e293b);
+  color: white;
+}
+
+/* LINKS */
+a {
+  text-decoration: none;
+  color: white;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  padding: 0 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* HAMBURGER */
+.menu-icon {
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* ================= SIDE MENU ================= */
+
+.nav-links {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 70%;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s ease;
+  z-index: 1001;
+}
+
+.nav-links.active {
+  right: 0;
+}
+
+/* LINKS STYLE */
+.nav-links a {
+  font-size: 20px;
+  margin: 15px 0;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #22c55e;
+  transform: scale(1.1);
+}
+
+/* CLOSE BUTTON */
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* OVERLAY */
+.overlay-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 999;
+}
+
+/* ================= HERO ================= */
+
+.hero-bg {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 60px;
+}
+
+.hero-content h1 {
+  font-size: 48px;
+  line-height: 1.3;
+}
+
+.hero-content p {
+  color: #cbd5f5;
+}
+
+/* ================= BUTTON ================= */
+
+.btn {
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: #22c55e;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #16a34a;
+  transform: scale(1.05);
+}
+
+/* ================= SECTION ================= */
+
+.section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+/* ================= GRID ================= */
+
+.grid,
+.feature-grid,
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+/* ================= CARD ================= */
+
+.card,
+.feature-card,
+.event-card {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+.card:hover,
+.feature-card:hover,
+.event-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 25px rgba(34,197,94,0.4);
+}
+
+/* ================= CONTACT ================= */
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 80vh;
+}
+
+.contact-info {
+  flex: 1;
+  padding: 40px;
+  background: #0f172a;
+}
+
+.contact-form {
+  flex: 1;
+  padding: 40px;
+  background: #1e293b;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 6px;
+}
+
+/* ================= MAP ================= */
+
+.map-container {
+  width: 100%;
+  height: 400px;
+  margin-top: 30px;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 10px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+
+  .hero-content h1 {
+    font-size: 28px;
+  }
+
+  .map-container {
+    height: 250px;
+  }
+
+  .contact-container {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .hero-content h1 {
+    font-size: 22px;
+  }
+
+  .logo {
+    font-size: 16px;
+  }
+}
+.menu-icon {
+  font-size: 28px;
+  cursor: pointer;
+  color: white;        /* 🔥 IMPORTANT */
+  display: block;      /* 🔥 FORCE SHOW */
+  z-index: 2000;       /* 🔥 ABOVE EVERYTHING */
+}
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  background: rgba(0,0,0,0.8); /* darker */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1500;
+}
+/* ================= EVENTS ================= */
+
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.event-card {
+  background: #1e293b;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: 0.4s;
+  position: relative;
+}
+
+/* IMAGE */
+.event-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* CONTENT */
+.event-content {
+  padding: 15px;
+  text-align: left;
+}
+
+.event-content h3 {
+  margin: 0;
+}
+
+.event-content p {
+  color: #94a3b8;
+  margin: 8px 0;
+}
+
+/* HOVER EFFECT */
+.event-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 0 25px rgba(34,197,94,0.4);
+}
+
+/* BUTTON INSIDE CARD */
+.event-card .btn {
+  margin-top: 10px;
+}
